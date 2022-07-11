@@ -1,7 +1,7 @@
 const dino = document.querySelector(".dinosaur");
 const container = document.querySelector(".container")
 const bg = document.querySelector(".background")
-
+document.getElementById("audio-src").load();
 const btn = document.querySelector(".play-btn");
 let scoreCard = document.querySelector(".score");
 let btnState = false;
@@ -32,6 +32,11 @@ function overlap(element1, element2)
 
 }
 
+function playSound(name) {
+    var audio = new Audio("sounds/" + name + ".mp3");
+    audio.play();
+    // audio.load();
+}
 
 
 
@@ -73,6 +78,7 @@ function startGame()
                 scoreCard.innerHTML = score;
             }
             if(overlap(dino, obstacle)){
+                playSound("wrong");
                 alert("Score: " + score);
                 location.reload();
             }
